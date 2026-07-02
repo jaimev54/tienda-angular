@@ -1,4 +1,28 @@
-﻿export interface User { id: number; name: string; email: string; role: 'customer' | 'admin'; createdAt: string; }
+﻿export interface User {
+  id: number;
+  name: string;
+  email: string;
+  role: 'customer' | 'admin';
+  createdAt: string;
+  phone?: string;
+  street?: string;
+  colony?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  country?: string;
+}
+
+export interface UpdateProfileRequest {
+  name?: string;
+  phone?: string;
+  street?: string;
+  colony?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  country?: string;
+}
 export interface AuthResponse { token: string; user: User; }
 export interface LoginRequest { email: string; password: string; }
 export interface RegisterRequest { name: string; email: string; password: string; }

@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { AuthService } from '../../../core/services/auth.service';
 import { CartService } from '../../../core/services/cart.service';
+
 @Component({
   selector: 'app-navbar', standalone: true,
   imports: [RouterLink, RouterLinkActive, MatToolbarModule, MatButtonModule, MatIconModule, MatBadgeModule, MatMenuModule, MatDividerModule],
@@ -29,10 +30,21 @@ import { CartService } from '../../../core/services/cart.service';
           </a>
           <button mat-icon-button [matMenuTriggerFor]="userMenu"><mat-icon>account_circle</mat-icon></button>
           <mat-menu #userMenu="matMenu">
-            <div class="user-info"><span class="user-name">{{userName()}}</span><span class="user-role">{{userRole()}}</span></div>
+            <div class="user-info">
+              <span class="user-name">{{userName()}}</span>
+              <span class="user-role">{{userRole()}}</span>
+            </div>
             <mat-divider />
-            <button mat-menu-item routerLink="/cart"><mat-icon>shopping_cart</mat-icon> Mi Carrito</button>
-            <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Cerrar sesion</button>
+            <button mat-menu-item routerLink="/profile">
+              <mat-icon>person</mat-icon> Mi Perfil
+            </button>
+            <button mat-menu-item routerLink="/cart">
+              <mat-icon>shopping_cart</mat-icon> Mi Carrito
+            </button>
+            <mat-divider />
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon> Cerrar sesion
+            </button>
           </mat-menu>
         } @else {
           <a mat-button routerLink="/auth/login">Iniciar sesion</a>
